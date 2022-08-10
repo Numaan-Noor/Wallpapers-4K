@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Wallpapers_4K.Models
 {
-    public class User
+    public class Admin
     {
         public string Name { get; set; }
         public string Password { get; set; }

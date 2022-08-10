@@ -15,6 +15,6 @@ namespace Wallpapers_4K.Models
         }
         public DbSet<Wallpaper> wallpapers{get;set;}
         public DbSet<Categories> categories { get; set; }
-        public DbSet<User> users { get; set; }
+        public DbSet<Admin> users { get; set; }
     }
 }

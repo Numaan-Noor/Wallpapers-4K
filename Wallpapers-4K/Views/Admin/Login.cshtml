@@ -1,7 +1,7 @@
-﻿@model User
-
+﻿
 @{
-    Layout = null;
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
             </div>
         </div>
     </nav>
-    <main class="login-form">
+    <main class="login-form" >
         <div class="cotainer">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -36,34 +36,48 @@
                         <div class="card-header text-center text-dark">Admin Login</div>
                         <div class="card-body">
 
-                            @if (ViewBag.msg == true)
-                            {
+
+                            <form action="Verify" method="post">
+
+                                <div class="col-md-10">
+                                    <input type="text" value="text" name="name" />
+                                </div>
+
+                                <div class="col-md-10">
+                                    <input type="password" value="password" name=" password" />
+                                </div>
+                                <input type="submit" value="Login" class="btn btn-outline-primary" />
+                            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+                        
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <strong>Error!</strong> Invalid Email or Password
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                            }
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
-
-
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                      <input type ="text" value="text" name="text" />
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                     
                                     <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                      <input type="password" value="password" name=" password" />
                                     </div>
                                 </div>
 
@@ -82,3 +96,5 @@
     </main>
 </body>
 </html>
+
+
