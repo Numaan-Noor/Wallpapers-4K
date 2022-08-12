@@ -8,6 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using Wallpapers_4K.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Wallpapers_4K
 {
@@ -23,6 +26,12 @@ namespace Wallpapers_4K
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //Dbcontext
+           services.AddDbContext<WallpaperDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString
+                ("wallConnection")));
+
+
             services.AddControllersWithViews();
         }
 

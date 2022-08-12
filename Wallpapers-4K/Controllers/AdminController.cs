@@ -10,9 +10,6 @@ namespace Wallpapers_4K.Controllers
 {
     public class AdminController : Controller
     {
-        SqlConnection con = new SqlConnection();
-        SqlCommand com = new SqlCommand();
-        SqlDataReader dr;
         ///
       
         [HttpGet]
@@ -22,36 +19,7 @@ namespace Wallpapers_4K.Controllers
         }
 
 
-        void connectionString()
-        {
-            con.ConnectionString = "data source=DESKTOP-4LK7J5A; database=wallpapers; integrated security=SSPI;";
-        }
 
-        [HttpPost]
-        public IActionResult Verify(Admin user)
-        {
 
-            connectionString();
-            con.Open();
-            
-            com.Connection = con;
-            com.CommandText = "select * from tbl.admin where name='"+user.Name+"' and password='"+user.Password+"'";
-            dr = com.ExecuteReader();
-
-            if(dr.Read())
-            {
-                con.Close();
-
-                return View("Create");
-            }
-            else
-            {
-                con.Close();
-
-                return View("Error");
-            }
-
-            
-        }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 
 namespace Wallpapers_4K.Models
@@ -16,5 +17,8 @@ namespace Wallpapers_4K.Models
         public DbSet<Wallpaper> wallpapers{get;set;}
         public DbSet<Categories> categories { get; set; }
         public DbSet<Admin> users { get; set; }
+
     }
+
+    
 }
