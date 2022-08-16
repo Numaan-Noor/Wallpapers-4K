@@ -20,5 +20,4 @@ namespace Wallpapers_4K.Models
 
     }
 
-    
 }
