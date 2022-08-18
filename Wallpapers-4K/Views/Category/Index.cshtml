@@ -1,0 +1,42 @@
+﻿@model IEnumerable< Wallpapers_4K.Models.Categories>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<h1>Employee Register</h1>
+<hr />
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-outline-success"><i class="fa fa-plus">Add Employee</i></a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+    <tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        <a asp-action="AddOrEdit" asp-route-id="@item.Id" class="text-reset"><i class="fa fa-marker fa-lg">Edit</i></a> |
+
+        <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger ml-1" onclick="return confirm(" Are you sure delete this record")"> <i class="fa fa-trash-alt fa-lg">Delete</i></a>
+    </td>
+
+
+</tr>
+        }
+    </tbody>
+</table>
+    
+
