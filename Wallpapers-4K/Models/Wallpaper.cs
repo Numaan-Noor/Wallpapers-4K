@@ -13,11 +13,13 @@ namespace Wallpapers_4K.Models
     {    [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        [NotMapped]
-        public IFormFile Upload_Image { get; set; }
+        public string Image { get; set; }
         [ForeignKey("admin")]
         public int? AdminId  { get; set; }
         public Admin admin { get; set; }
         public ICollection<Categories> Categories { get; set; }
+
+        [NotMapped]
+        public IFormFile Photo { get; set; }
     }
 }
