@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Wallpapers_4K.Controllers
 
         private readonly WallpaperDbContext _context;
         private readonly IWebHostEnvironment _env;
+      
 
         public WallpaperController(WallpaperDbContext context, IWebHostEnvironment env)
         {
@@ -33,23 +35,46 @@ namespace Wallpapers_4K.Controllers
         // GET: Category/Create
         public IActionResult AddOrEdit(int id = 0)
         {
+            List<Categories> li = new List<Categories>();
+            li = _context.categories.ToList();
+            ViewBag.listofitems = li;
+
+
+
+
+/*
+            ViewBag.listofitems = _context.categories.ToList();*/
+
+
+
+         /*   ViewBag.listofitems = new SelectList(_context.categories, "id", "Name");
+            var listofitems = _context.wallpapers.Include(s => s.CategoryNavigation);
+            return View(listofitems.ToList());*/
+
+
+
+
             if (id == 0)
-                return View(new Wallpaper());
+            return View(new Wallpaper());
             else
                 return View(_context.wallpapers.Find(id));
+            ///Wallpaper/Index
 
         }
+
 
         // POST: Category/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit([Bind("Id,Name,Categories,Photo")] Wallpaper wallpaper)
+        public async Task<IActionResult> AddOrEdit([Bind("Id,Name,CategoryId,CategoryNavigation,Photo")] Wallpaper wallpaper)
         {
+
 
             if (ModelState.IsValid)
             {
+
                 string wwwwRootPath = _env.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(wallpaper.Photo.FileName);
                 string extension = Path.GetExtension(wallpaper.Photo.FileName);
@@ -60,7 +85,7 @@ namespace Wallpapers_4K.Controllers
                     await wallpaper.Photo.CopyToAsync(filestream);
                 }
 
-                    _context.Add(wallpaper);
+                _context.Add(wallpaper);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

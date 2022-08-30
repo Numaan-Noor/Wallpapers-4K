@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 namespace Wallpapers_4K.Models
 {
     public class Categories
-    {    [Key]
+    {
+        public Categories()
+        {
+            wallpapers = new HashSet<Wallpaper>();
+        }
+        [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        [ForeignKey("admin")]
-        public int? AdminId { get; set; }
-        public Admin admin { get; set; }
-        [ForeignKey("wallpaper")]
-        public int? WallpaperId { get; set; }
-        public Wallpaper Wallpaper { get; set; }
+        public ICollection<Wallpaper> wallpapers { get; set; }
 
     }
 }

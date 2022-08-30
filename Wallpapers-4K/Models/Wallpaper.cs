@@ -17,7 +17,10 @@ namespace Wallpapers_4K.Models
         [ForeignKey("admin")]
         public int? AdminId  { get; set; }
         public Admin admin { get; set; }
-        public ICollection<Categories> Categories { get; set; }
+
+        [ForeignKey("Category")]
+        public int? CategoryId { get; set; }
+        public Categories CategoryNavigation { get; set; }
 
         [NotMapped]
         public IFormFile Photo { get; set; }

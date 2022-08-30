@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Wallpapers_4K.Models;
 
 namespace Wallpapers_4K.Migrations
 {
     [DbContext(typeof(WallpaperDbContext))]
-    partial class WallpaperDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220826105554_second")]
+    partial class second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,10 +46,15 @@ namespace Wallpapers_4K.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AdminId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AdminId");
 
                     b.ToTable("categories");
                 });
@@ -83,10 +90,17 @@ namespace Wallpapers_4K.Migrations
                     b.ToTable("wallpapers");
                 });
 
+            modelBuilder.Entity("Wallpapers_4K.Models.Categories", b =>
+                {
+                    b.HasOne("Wallpapers_4K.Models.Admin", "admin")
+                        .WithMany("categories")
+                        .HasForeignKey("AdminId");
+                });
+
             modelBuilder.Entity("Wallpapers_4K.Models.Wallpaper", b =>
                 {
                     b.HasOne("Wallpapers_4K.Models.Admin", "admin")
-                        .WithMany()
+                        .WithMany("wallpapers")
                         .HasForeignKey("AdminId");
 
                     b.HasOne("Wallpapers_4K.Models.Categories", "CategoryNavigation")
