@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Wallpapers_4K.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Wallpapers_4K
 {
@@ -33,6 +34,12 @@ namespace Wallpapers_4K
 
 
             services.AddControllersWithViews();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Admin/Login";
+
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +59,8 @@ namespace Wallpapers_4K
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

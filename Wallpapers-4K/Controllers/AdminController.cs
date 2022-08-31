@@ -7,14 +7,14 @@ using Wallpapers_4K.Models;
 using System.Data.SqlClient;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Wallpapers_4K.Controllers
 {
+
     public class AdminController : Controller
     {
-        
-      
         [HttpGet]
         public IActionResult Login()
         {
@@ -30,22 +30,31 @@ namespace Wallpapers_4K.Controllers
                 return RedirectToAction("Login");
             }
 
-            //Check the user name and password  
-            //Here can be implemented checking logic from the database  
+            //Check the user name and password
+            //Here can be implemented checking logic from the database
             ClaimsIdentity identity = null;
             bool isAuthenticated = false;
-
             if (userName == "wap" && password == "wap321#")
             {
+                List<Claim> claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, userName));
+                claims.Add(new Claim(ClaimTypes.Name, userName));
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                //principal
+
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                HttpContext.SignInAsync(claimsPrincipal);
                 return RedirectToAction("Index", "dashboard");
+
             }
-            else
-            {
-                Console.WriteLine("Password is not correct");
-            }
-            return View();
+
+
+        return View();
         }
 
 
-        }
+     }
+
+
 }

@@ -3,8 +3,12 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
 <h1>good to go</h1>
 <button><a href="/Category/Index">category</a></button>
 <button><a href="/Wallpaper/Index">wallpaper</a></button>
+</div>
+}
 
