@@ -3,53 +3,59 @@
     ViewData["Title"] = "AddOrEdit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@if (User.Identity.IsAuthenticated)
+{
+    <style>
+        body {
+            font-family: 'Helvetica';
+            background-color: #0e2439;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="AddOrEdit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" placeholder="Enter Category" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <br />
 
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="AddOrEdit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-
-
-        @*    <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <input asp-for="CategoryId" class="form-control" />
-                <span asp-validation-for="CategoryId" class="text-danger"></span>
-            </div>*@
+                @*    <div class="form-group">
+                        <label asp-for="CategoryId" class="control-label"></label>
+                        <input asp-for="CategoryId" class="form-control" />
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>*@
 
 
 
-                      <div class="form-group">
-            <label asp-for="CategoryNavigation" class="control-label"></label>
-            <select asp-for="CategoryId" asp-items="@(new SelectList(@ViewBag.listofitems,"Id","Name"))"></select>
+                <div class="form-group">
+                    <label style="color:white;" class="control-label">Select Category</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="CategoryId" asp-items="@(new SelectList(@ViewBag.listofitems, "Id", "Name"))"></select>
 
+                </div>
+
+             
+                <br />
+                <div class="form-group">
+                    <h4 style="color:white;">Choose File</h4>
+                    <label style="color:white;" class="control-label"></label>
+                    <input asp-for="Photo" style="color:white;" accept="image/*" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" value="Submit" style="background-color: #1f364d;" class="btn btn-primary" />
+                </div>
+            </form>
         </div>
-
-            @* <div class="form-group">
-            <label  class="control-label">new</label>
-          @Html.DropDownList("listofitems", (SelectList)ViewBag.listofitems, htmlAttributes: new {@class = "hbox i-sbox"})
-            <span  class="text-danger"></span>
-        </div>*@
-
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" accept="image/*" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <br />
+    <div>
+        <a asp-action="Index" class="btn btn-primary" style="background-color: #1f364d;" role="button">Back to List</a>
+    </div>
+}
 

@@ -45,7 +45,7 @@ namespace Wallpapers_4K.Controllers
 
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToAction("Index", "dashboard");
+                return RedirectToAction("Index", "Wallpaper");
 
             }
 

@@ -6,13 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\css\**" />
-    <Content Remove="wwwroot\css\**" />
-    <EmbeddedResource Remove="wwwroot\css\**" />
-    <None Remove="wwwroot\css\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Remove="Migrations\20220812121423_Wallpaperdb.cs" />
     <Compile Remove="Migrations\20220812121423_Wallpaperdb.Designer.cs" />
   </ItemGroup>

@@ -4,31 +4,39 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h4>Employee Form</h4>
+@if (User.Identity.IsAuthenticated)
+{
+    <style>
+        body {
+            font-family: 'Helvetica';
+            background-color: #0e2439;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="AddOrEdit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" placeholder="Enter Category" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <form asp-action="AddOrEdit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
 
 
+                <br />
 
-
-
-            <div class="form-group">
-                <input type="submit" value="Submit" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <input type="submit" value="Submit" style="background-color: #1f364d;" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+    <br />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index" class="btn btn-primary" style="background-color: #1f364d;" role="button">Back to List</a>
+    </div>
+}
 
