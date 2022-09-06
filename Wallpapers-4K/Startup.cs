@@ -68,7 +68,7 @@ namespace Wallpapers_4K
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Wallpapers_4K.Models.Wallpaper>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+@foreach (var item in Model)
+{
+<h1>
+    @Html.DisplayFor(modelitem => item.Name)
+</h1>
+<h1>
+    <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
+</h1>
+}
+
+
+

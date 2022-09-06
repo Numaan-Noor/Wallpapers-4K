@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Wallpapers_4K.Models.Wallpaper>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ======= Hero Section ======= -->
+
+<main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+        <div class="container-fluid">
+
+            <div class="row gy-4 justify-content-center">
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="@("~/Image/" + item.Image)" asp-append-version="true" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a  title="@item.Name" href="~/Image/@item.Image" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <a href="/Single/Index/@item.Id" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Gallery Item -->
+                }
+
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+
+</main><!-- End #main -->
