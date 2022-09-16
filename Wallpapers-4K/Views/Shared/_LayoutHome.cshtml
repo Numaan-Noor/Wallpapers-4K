@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,6 +25,8 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+    </script>
 
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -35,6 +38,7 @@
 
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
+
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
             <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
@@ -50,10 +54,31 @@
                     <li class="dropdown">
                         <a href="#"><span>Gallery</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                            <li><a href="gallery.html">Nature</a></li>
-                            <li><a href="gallery.html">People</a></li>
-                            </ul>
-                     <li><a href="contact.html">Contact</a></li>
+
+
+                        @*    @foreach (var item in Model)
+                            {
+                                <li>
+                                    <a href="https://www.google.co.in/">@item.Name</a>
+
+                                </li>
+                            }*@
+
+                        </ul>
+
+
+                        @*<li><a href="gallery.html">Nature</a></li>*@
+
+                        @*<li><select class="form-select" aria-label="Default select example"  asp-items="@(new SelectList(@ViewBag.listofitems, "Id", "Name"))"></select></li>*@
+                        @*                       @Html.DropDownList("listofitems", ViewBag.listofitems as IEnumerable<SelectListItem>, "-Select-", new{@id = "Id",@class = "form-control" })*@
+
+
+                        @* @Html.DropDownListFor(model => model.Name,ViewBag.Walltbl as SelectList,"Select",new {@class ="form-control" })*@
+
+                        @*             <select class="form-select" aria-label="Default select example"  asp-items="@(new SelectList(@ViewBag.listofitems, "Id", "Name"))"></select>*@
+                    </li>
+
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav><!-- .navbar -->
 
@@ -67,8 +92,9 @@
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
         </div>
-    </header><!-- End Header -->
-    @RenderBody()
+    </header><!-- End Header --><div>
+        @RenderBody()
+    </div>
 
     <footer id="footer" class="footer">
         <div class="container">

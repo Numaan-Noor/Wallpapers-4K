@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<Wallpapers_4K.Models.Wallpaper>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
+
 
 <!-- ======= Hero Section ======= -->
 
@@ -19,7 +20,7 @@
                         <div class="gallery-item h-100">
                             <img src="@("~/Image/" + item.Image)" asp-append-version="true" class="img-fluid" alt="">
                             <div class="gallery-links d-flex align-items-center justify-content-center">
-                                <a  title="@item.Name" href="~/Image/@item.Image" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <a title="@item.Name" href="~/Image/@item.Image" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                 <a href="/Single/Index/@item.Id" class="details-link"><i class="bi bi-link-45deg"></i></a>
                             </div>
                         </div>

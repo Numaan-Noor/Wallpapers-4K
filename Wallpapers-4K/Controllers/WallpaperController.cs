@@ -44,14 +44,16 @@ namespace Wallpapers_4K.Controllers
 
 
 
-/*
-            ViewBag.listofitems = _context.categories.ToList();*/
+
+
+            /*
+                        ViewBag.listofitems = _context.categories.ToList();*/
 
 
 
-         /*   ViewBag.listofitems = new SelectList(_context.categories, "id", "Name");
-            var listofitems = _context.wallpapers.Include(s => s.CategoryNavigation);
-            return View(listofitems.ToList());*/
+            /*   ViewBag.listofitems = new SelectList(_context.categories, "id", "Name");
+               var listofitems = _context.wallpapers.Include(s => s.CategoryNavigation);
+               return View(listofitems.ToList());*/
 
 
 
@@ -96,7 +98,7 @@ namespace Wallpapers_4K.Controllers
 
 
 
-        // GET: Category/Delete/5
+        // GET: Category/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             var wallpaper = await _context.wallpapers.FindAsync(id);

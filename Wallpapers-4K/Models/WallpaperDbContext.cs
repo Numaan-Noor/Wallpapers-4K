@@ -10,6 +10,10 @@ namespace Wallpapers_4K.Models
 {
     public class WallpaperDbContext : DbContext
     {
+        public WallpaperDbContext()
+        {
+        }
+
         public WallpaperDbContext(DbContextOptions<WallpaperDbContext> options) : base(options)
         {
 
