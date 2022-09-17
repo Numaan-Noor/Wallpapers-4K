@@ -1,44 +1,47 @@
 ﻿@model IEnumerable<Wallpapers_4K.Models.Wallpaper>
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    Layout = null;
 }
 
-@foreach (var item in Model)
-{
-    <h1>
-        @Html.DisplayFor(modelitem => item.Name)
-    </h1>
-    <h1>
-        <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
-    </h1>
-    <a href="@("~/Image/" + item.Id)" value="fileName">
-        fileName
-
-
-    </a>
 
 
 
 
-}
+
+                        @foreach (var item in Model)
+                        {
+
+
+                            <h1>
+                                @Html.DisplayFor(modelitem => item.Name)
+                            </h1>
+                            <div >
+                                <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
+                            </div>
+                            <p id="img-link" style="
+    display: none;
+    visibility: hidden;
+">@("/Image/" + item.Image)</p>
+
+                            <div id="imgAnchor"></div>
+                            
+
+
+
+
+                        }
 <script>
-    var saveData = (function () {
-        var a = document.createElement("a");
-        document.body.appendChild(a);
-        a.style = "display: none";
-        return function (data, fileName) {
-            var json = JSON.stringify(data),
-                blob = new Blob([json], { type: "octet/stream" }),
-                url = window.URL.createObjectURL(blob);
-            a.href = url;
-            a.download = fileName;
-            a.click();
-            window.URL.revokeObjectURL(url);
-        };
-    }());
+                            const imageLink = document.getElementById('img-link');
+                            const anchorContainer = document.getElementById('imgAnchor');
 
-    saveData(data, fileName);
+    let imgLink = imageLink.innerHTML;
+    imgLink = imgLink.split(' ').join('%20')
+    console.log(imgLink);
+
+                            anchorContainer.insertAdjacentHTML('beforeend', `<a href="${imgLink}" download="file">Download</a>`)
+
+
 </script>
 
 

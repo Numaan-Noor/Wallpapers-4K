@@ -63,6 +63,23 @@ namespace Wallpapers_4K.Controllers
            Name = categories.Name
        };
 
+
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Wallpaper>>> GetWallpaper()
+        {
+            return await _context.wallpapers
+                .Select(x => Itemwall(x))
+                .ToListAsync();
+        }
+
+        private static Wallpaper Itemwall(Wallpaper wallpaper) => new Wallpaper
+        {
+            Id = wallpaper.Id,
+            Name = wallpaper.Name,
+            Image = wallpaper.Image
+        };
+
     }
 
         }

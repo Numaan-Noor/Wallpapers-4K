@@ -35,10 +35,6 @@ namespace Wallpapers_4K.Controllers
             var std = await _context.wallpapers.ToListAsync();
             return View(std.Where(s => s.CategoryId == id));
         }
-        public async Task<IActionResult> Categoryy(int id)
-        {
-
-            return View(await _context.categories.ToListAsync());
-        }
+      
     }
 }
