@@ -80,6 +80,12 @@ namespace Wallpapers_4K.Controllers
             Image = wallpaper.Image
         };
 
+        public async Task<IActionResult> Contact(int id)
+        {
+
+
+            return View(await _context.wallpapers.ToListAsync());
+        }
     }
 
         }

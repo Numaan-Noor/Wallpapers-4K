@@ -1219,11 +1219,11 @@ h6 {
 --------------------------------------------------------------*/
 .hero {
   width: 100%;
-  min-height: 30vh;
+  min-height: 10vh;
   background: #000;
   background-size: cover;
   position: relative;
-  padding: 140px 0 60px 0;
+  padding: 80px 0 60px 0;
 }
 
 .hero h2 {

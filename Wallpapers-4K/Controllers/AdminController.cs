@@ -34,7 +34,7 @@ namespace Wallpapers_4K.Controllers
             //Here can be implemented checking logic from the database
             ClaimsIdentity identity = null;
             bool isAuthenticated = false;
-            if (userName == "wap" && password == "wap321#")
+            if (userName == "omega" && password == "omega321#")
             {
                 List<Claim> claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, userName));

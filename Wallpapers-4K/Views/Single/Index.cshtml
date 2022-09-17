@@ -1,48 +1,96 @@
 ﻿@model IEnumerable<Wallpapers_4K.Models.Wallpaper>
 @{
     ViewData["Title"] = "Index";
-    Layout = null;
+    Layout = "~/Views/shared/_LayoutHome.cshtml";
 }
+<main id="main" data-aos="fade" data-aos-delay="1500">
 
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+        <div class="container position-relative">
+            
+        </div>
+    </div><!-- End Page Header -->
+    <!-- ======= Gallery Single Section ======= -->
+    <section id="gallery-single" class="gallery-single">
+        @foreach (var item in Model)
+        {
+            <div class="container">
 
+                <div class="position-relative h-100">
+                    <div class="">
+                        <div class="">
 
-
-
-
-                        @foreach (var item in Model)
-                        {
-
-
-                            <h1>
-                                @Html.DisplayFor(modelitem => item.Name)
-                            </h1>
-                            <div >
-                                <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
+                            <div class="">
+                                <img src="@("~/Image/" + item.Image)" asp-append-version="true" alt="" width="1300px" height="500px" />
                             </div>
                             <p id="img-link" style="
     display: none;
     visibility: hidden;
 ">@("/Image/" + item.Image)</p>
 
-                            <div id="imgAnchor"></div>
-                            
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row justify-content-between gy-4 mt-4">
+
+                    <div class="col-lg-8">
+                        <div class="portfolio-description">
+                            <h2 style="margin-left:100px">@item.Name</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="portfolio-info">
+                            <ul>
+                                <li><a class="btn-visit align-self-start"><div id="imgAnchor"></div></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        }
 
 
 
 
-                        }
-<script>
-                            const imageLink = document.getElementById('img-link');
-                            const anchorContainer = document.getElementById('imgAnchor');
-
-    let imgLink = imageLink.innerHTML;
-    imgLink = imgLink.split(' ').join('%20')
-    console.log(imgLink);
-
-                            anchorContainer.insertAdjacentHTML('beforeend', `<a href="${imgLink}" download="file">Download</a>`)
+        @*   @foreach (var item in Model)
+                                    {
 
 
-</script>
+                                        <h1>
+                                            @Html.DisplayFor(modelitem => item.Name)
+                                        </h1>
+                                        <div>
+                                            <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
+                                        </div>
+                                        <p id="img-link" style="
+            display: none;
+            visibility: hidden;
+        ">@("/Image/" + item.Image)</p>
+
+                                        <div id="imgAnchor"></div>
+
+        style="margin-left:100px"
+
+
+
+                                    }*@
+        <script>
+            const imageLink = document.getElementById('img-link');
+            const anchorContainer = document.getElementById('imgAnchor');
+
+            let imgLink = imageLink.innerHTML;
+            imgLink = imgLink.split(' ').join('%20')
+            console.log(imgLink);
+
+            anchorContainer.insertAdjacentHTML('beforeend', `<a href="${imgLink}" download="file" style="color:white;">Download</a>`)
+
+
+        </script>
 
 
 

@@ -3,10 +3,65 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutHome.cshtml";
 }
-<h1>hello</h1>
-@foreach (var item in Model)
+<main id="main" data-aos="fade" data-aos-delay="1500">
+
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2>Categories</h2>
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </div><!-- End Page Header -->
+
+
+    <section id="gallery" class="gallery">
+        <div class="container-fluid">
+
+            <div class="row gy-4 justify-content-center">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6">
+                        <div class="gallery-item h-100">
+                            <img src="@("~/Image/" + item.Image)" asp-append-version="true" class="img-fluid" alt="">
+                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                <a title="@item.Name" href="~/Image/@item.Image" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                <a href="/Single/Index/@item.Id" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                            </div>
+                        </div>
+                    </div><!-- End Gallery Item -->
+                }
+
+
+
+                </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+
+</main><!-- End #main -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@foreach (var item in Model)
 {
-    
-        <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
-    
-}
+
+    <img src="@("~/Image/" + item.Image)" asp-append-version="true" width="500px" height="500px" />
+
+}*@
